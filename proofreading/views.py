@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .utils import chat_gpt, create_prompt
+from .utils import chat_gpt, create_prompt, mk_html
 
 
 # Create your views here.
@@ -17,6 +17,8 @@ class GrammarCorrectionView(View):
             prompt = create_prompt(input_text, "GrammarCorrection.txt")
             # Chat-GPTへリクエストを投げる
             response = chat_gpt(prompt)
+            # htmlデータを生成
+            response = mk_html(input_text, response)
             # 辞書型データを作成する
             context = {'input_text': input_text,
                        'response': response,

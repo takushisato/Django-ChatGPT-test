@@ -2,6 +2,7 @@ import openai
 import os
 from django.conf import settings
 from server.settings import SECRET_KEY
+import difflib
 
 APK_KEY = SECRET_KEY
 
@@ -32,3 +33,27 @@ def create_prompt(input_text, file_name):
     # Chat-GTPへ投げるフォーマットに入力文をセットする。
     prompt = file_read.replace("[input]", input_text)
     return prompt
+
+def highlight(word, identifier):
+    """
+    質問文と回答文の差異を可視化する
+    追加された部分→ 背景を黄色＆アンダーラインを引く
+    削除された部分→ 取り消し線を引く
+    """
+    if identifier == '+':
+        return '<span class="lint-mark-warning">{}</span>'.format(word)
+    elif identifier == '-':
+        return '<span class="lint-mark-del">{}</span>'.format(word)
+
+
+def mk_html(question, response):
+    # HTMLデータを作成する
+    html = ''
+    for difference_data in difflib.ndiff(question, response):
+        if difference_data[0] == ' ':
+            html += difference_data[2]
+        elif difference_data[0] == '+':
+            html += highlight(difference_data[2], '+')
+        elif difference_data[0] == '-':
+            html += highlight(difference_data[2], '-')
+    return html
