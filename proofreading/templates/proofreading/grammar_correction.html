@@ -1,0 +1,38 @@
+{% extends './base.html' %}
+{% load static %}
+{% block content %}
+
+<section>
+    <h3>ChatGPTによる文章校正</h3>
+    <br />
+    <p>校正したい文章を以下に入力してください。<br>
+
+    <form method=POST action="{% url 'grammar_correction' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <textarea style="border:4px solid rgb(118, 230, 13)" class="form-control"
+                placeholder="校正したい文章をここに入力" name="input_text" rows="5" cols="100"></textarea>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary btn-sm">校正する</button>
+    </form>
+    <br />
+</section>
+<hr>
+
+{% if response %}
+<section>
+    <p><strong>入力した文章：</strong><br>
+    <div class="box">
+        {{input_text}}
+    </div><br>
+
+    <strong>ChatGPTによる校正結果：</strong><br>
+    <div class="box">
+       {{response}}
+    </div>
+    <br><br>
+</section>
+{% endif %}
+
+{% endblock %}

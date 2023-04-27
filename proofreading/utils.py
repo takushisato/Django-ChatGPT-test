@@ -1,4 +1,3 @@
-
 import openai
 import os
 from django.conf import settings
@@ -13,8 +12,8 @@ def chat_gpt(prompt):
 
     # APIを使ってリクエストを投げる
     response = openai.Completion.create(
-        model = "text-davinci-003",
-        prompt= prompt,
+        model="text-davinci-003",
+        prompt=prompt,
         temperature=0,
         max_tokens=300,
         top_p=1.0,
