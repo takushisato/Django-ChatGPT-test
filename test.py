@@ -1,6 +1,8 @@
 import openai
 
-APK_KEY = "ここに取得したopenAIのキーを入れる"
+from server.settings import SECRET_KEY
+
+APK_KEY = SECRET_KEY
 
 
 def chat_gpt(prompt):
