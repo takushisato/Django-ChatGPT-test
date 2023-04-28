@@ -11,7 +11,8 @@ def chat_gpt(prompt):
     openai.api_key = APK_KEY  # API KEYをセット
     openai.Model.list()  # OpenAIのインスタンスを生成
 
-    # APIを使ってリクエストを投げる
+    # APIを使ってリクエストを投げる（下記リンクが公式）
+    # https://platform.openai.com/docs/models/gpt-3
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=prompt,
