@@ -43,7 +43,7 @@ https://uha-blog.com/python/django-environ/
 <br><br>
 
 ### バージョン情報
-Python 3.10.11
-Djnago 4.2
-django-environ 0.10.0
-openai 0.27.4
+Python 3.10.11<br>
+Djnago 4.2<br>
+django-environ 0.10.0<br>
+openai 0.27.4<br>
