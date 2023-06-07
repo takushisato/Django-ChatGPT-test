@@ -1,4 +1,9 @@
-## Djnago ＋ ChatGPT で作成した文章の校正アプリ
+## 【個人開発】Djnago ＋ openAI で制作した釣りサポートサイト
+
+<br>
+現在開発中。
+<br>
+
 ### 事前準備
 ```OpenAI```のAPIを取得するAPIキーを取得してください。<br>
 取得後は```.text```ファイル等に保存しておいてください。<br>
@@ -23,17 +28,6 @@ pip install django openai
 ```
 python manage.py runserver
 ```
-
-<br>
-これで```http://localhost:8000/grammar_correction```にアクセスすると文章の校正を正してくれるアプリが立ち上がります。
-
-<br><br>
-
-### 参考
-（参考元です。環境変数を使用する様に一部変更しています）<br>
-https://note.com/shinya_hd/n/nc9ba9f431e9b
-
-<br>
 
 環境変数をDjangoで使う方法<br>
 もしかすると```django-environ```のインストールが求めれるかも知れません。<br>
